@@ -49,7 +49,7 @@ def get_live_chat_messages(live_chat_id):
 
 
 # 定数の設定
-WIDTH, HEIGHT = 700, 840  # 幅と高さを少し大きくする
+WIDTH, HEIGHT = 700, 800  # 幅と高さを少し大きくする
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 BLUE = (0, 0, 255)
@@ -61,7 +61,7 @@ MARGIN = 50  # 余白を設定
 ANIMATION_DURATION = 3  # アニメーションの長さ（秒）
 
 
-debug = 0
+debug = 1
 
 # Pygameの初期化
 pygame.init()
@@ -134,10 +134,14 @@ def draw_labels(cell_size):
 
 
 def parse_comment(comment):
-    match = re.match(r".*?([A-I])([a-i])([1-9])", comment)
+    # 入力をすべて大文字に変換し、小文字を無視するようにする
+    match = re.match(r"([A-Ia-i])([a-i])([1-9])", comment)
     if not match:
         return None
     col, row, num = match.groups()
+    print(col, row, num)
+    col = col.upper()  # 列の文字を大文字に変換
+    row = row.lower()  # 行の文字を小文字に変換
     col = ord(col) - ord("A")
     row = ord(row) - ord("a")
     num = int(num)
