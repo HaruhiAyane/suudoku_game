@@ -1,4 +1,3 @@
-import googleapiclient.discovery
 import googleapiclient.errors
 import time
 import pygame
@@ -61,7 +60,7 @@ MARGIN = 50  # 余白を設定
 ANIMATION_DURATION = 3  # アニメーションの長さ（秒）
 
 
-debug = 1
+debug = 0
 
 # Pygameの初期化
 pygame.init()
